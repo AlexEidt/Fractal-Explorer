@@ -29,7 +29,7 @@ class FractalViewer:
         self.image = np.empty((height, width, 3), dtype=np.uint8)
         self.snapshot_count = 0
 
-        self.scale = np.array([width/2, height], dtype=np.float64)
+        self.scale = np.array([width / 2, height], dtype=np.float64)
         zero = np.array([0, 0], dtype=np.float64)
         self.offset = zero.copy()
         self.mouse = zero.copy()
