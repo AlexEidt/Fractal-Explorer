@@ -18,6 +18,8 @@ Exploring works in real time for moderately sized windows (e.g. 640x360) by usin
 
 <br />
 
+[![Fractal Exploration Video](https://img.youtube.com/vi/FHbmBNEnOZI/hqdefault.jpg)](https://youtu.be/FHbmBNEnOZI)
+
 # Keys and Mouse Controls
 
 Key | Function
