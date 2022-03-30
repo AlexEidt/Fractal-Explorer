@@ -4,6 +4,8 @@ An Escape-Time Fractal Explorer written in Python for Mandelbrot and Julia Sets.
 
 Exploring works in real time for moderately sized windows (e.g. 640x360) by using Just-In-Time Compilation (JIT) and SIMD instructions provided by `numba`.
 
+Run `viewer.py` to explore the fractals!
+
 <br />
 
 <img src="Docs/fractal-0.png" alt="Julia Set Fractal" />
@@ -47,7 +49,7 @@ Mouse Scroll | Zoom in and out
 pip install numpy numba pillow imageio
 ```
 
-# Acknoledgements
+# Acknowledgements
 
 * Wikipedia pages on the [Mandelbrot Set](https://en.wikipedia.org/wiki/Mandelbrot_set), [Julia Set](https://en.wikipedia.org/wiki/Julia_set) and [Smooth Coloring](https://en.wikipedia.org/wiki/Plotting_algorithms_for_the_Mandelbrot_set).
 * javidx9's [video on Fractals](https://www.youtube.com/watch?v=PBvLs88hvJ8) and on [Panning and Zooming](https://www.youtube.com/watch?v=ZQ8qtAizis4).
