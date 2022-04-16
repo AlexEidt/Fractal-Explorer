@@ -14,11 +14,10 @@ from fractals import mandelbrot, julia
 WIDTH, HEIGHT = 640, 360
 MIN_ITERATIONS = 100
 MAX_ITERATIONS = 1024
-SNAPSHOT_TYPE = 'png'
+SNAPSHOT_TYPE = "png"
 
 
 class FractalViewer:
-
     def __init__(self, width, height):
         self.width = width
         self.height = height
@@ -45,23 +44,31 @@ class FractalViewer:
 
         self.mouse_before_zoom = zero.copy()
         self.mouse_after_zoom = zero.copy()
-    
+
         self.alpha = 0.1
         # Color Palette in the form of a list of RGB tuples.
-        self.palette = np.array([
-            (0.5 * np.sin(np.arange(MAX_ITERATIONS) * self.alpha) + 0.5) * 255,         # R
-            (0.5 * np.sin(np.arange(MAX_ITERATIONS) * self.alpha + 2.094) + 0.5) * 255, # G
-            (0.5 * np.cos(np.arange(MAX_ITERATIONS) * self.alpha + 4.188) + 0.5) * 255  # B
-        ], dtype=np.uint8).transpose(1, 0)
+        self.palette = np.array(
+            [
+                (0.5 * np.sin(np.arange(MAX_ITERATIONS) * self.alpha) + 0.5) * 255,  # R
+                (0.5 * np.sin(np.arange(MAX_ITERATIONS) * self.alpha + 2.094) + 0.5)
+                * 255,  # G
+                (0.5 * np.cos(np.arange(MAX_ITERATIONS) * self.alpha + 4.188) + 0.5)
+                * 255,  # B
+            ],
+            dtype=np.uint8,
+        ).transpose(1, 0)
 
         self.fractal_func(
             self.image,
             self.palette,
             self.iterations,
-            self.frac_tl[0], self.frac_tl[1],
-            self.frac_br[0], self.frac_br[1],
+            self.frac_tl[0],
+            self.frac_tl[1],
+            self.frac_br[0],
+            self.frac_br[1],
             self.smooth,
-            self.julia_point[0], self.julia_point[1]
+            self.julia_point[0],
+            self.julia_point[1],
         )
 
         root = tk.Tk()
@@ -71,11 +78,11 @@ class FractalViewer:
         self.label = tk.Label(root, image=frame_image)
         self.label.pack()
 
-        root.bind('<KeyPress>', lambda event: self.update_keypress(event))
-        root.bind('<MouseWheel>', lambda event: self.update_mousewheel(event))
-        root.bind('<Motion>', lambda event: self.motion(event))
-        root.bind('<ButtonPress 1>', self.set_pressed)
-        root.bind('<ButtonRelease 1>', self.set_pressed)
+        root.bind("<KeyPress>", lambda event: self.update_keypress(event))
+        root.bind("<MouseWheel>", lambda event: self.update_mousewheel(event))
+        root.bind("<Motion>", lambda event: self.motion(event))
+        root.bind("<ButtonPress 1>", self.set_pressed)
+        root.bind("<ButtonRelease 1>", self.set_pressed)
 
         self.update_screen()
 
@@ -86,29 +93,31 @@ class FractalViewer:
         shift = event.char.isupper()
         key = event.char.lower()
 
-        if key == 'm':
+        if key == "m":
             self.fractal_func = mandelbrot
-        elif key == 'j':
+        elif key == "j":
             self.fractal_func = julia
 
-        if key == 's':
+        if key == "s":
             self.smooth = not self.smooth
 
-        if key == 'i':
+        if key == "i":
             # If holding shift, increase iterations.
             self.iterations += -4 if shift else 4
             self.iterations = max(min(self.iterations, MAX_ITERATIONS), MIN_ITERATIONS)
 
-        if key == 'k':
+        if key == "k":
             self.julia_point[0] += -0.01 if shift else 0.01
-        if key == 'l':
+        if key == "l":
             self.julia_point[1] += -0.01 if shift else 0.01
 
-        if key == 'c':
-            imageio.imwrite(f'fractal-{self.snapshot_count}.{SNAPSHOT_TYPE}', self.image)
+        if key == "c":
+            imageio.imwrite(
+                f"fractal-{self.snapshot_count}.{SNAPSHOT_TYPE}", self.image
+            )
             self.snapshot_count += 1
-        
-        if key in 'mjsikl':
+
+        if key in "mjsikl":
             self.update_screen()
 
     def update_mousewheel(self, event):
@@ -118,9 +127,9 @@ class FractalViewer:
             self.scale *= 1.1
         else:
             self.scale /= 1.1
-        
+
         self.screen_to_world(self.pix_br - self.mouse, self.mouse_after_zoom)
-        self.offset += (self.mouse_before_zoom - self.mouse_after_zoom)
+        self.offset += self.mouse_before_zoom - self.mouse_after_zoom
         self.update_screen()
 
     def update_screen(self):
@@ -130,10 +139,13 @@ class FractalViewer:
             self.image,
             self.palette,
             self.iterations,
-            self.frac_tl[0], self.frac_tl[1],
-            self.frac_br[0], self.frac_br[1],
+            self.frac_tl[0],
+            self.frac_tl[1],
+            self.frac_br[0],
+            self.frac_br[1],
             self.smooth,
-            self.julia_point[0], self.julia_point[1]
+            self.julia_point[0],
+            self.julia_point[1],
         )
         frame_image = ImageTk.PhotoImage(Image.fromarray(self.image))
         self.label.configure(image=frame_image)
@@ -154,7 +166,7 @@ class FractalViewer:
     def world_to_screen(self, v, n):
         n[:] = (v - self.offset) * self.scale
 
-    def screen_to_world(self,n, v):
+    def screen_to_world(self, n, v):
         v[:] = n / self.scale + self.offset
 
     def set_pressed(self, event):
@@ -166,5 +178,5 @@ def main():
     FractalViewer(WIDTH, HEIGHT)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
