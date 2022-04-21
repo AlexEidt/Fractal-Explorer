@@ -45,12 +45,12 @@ class FractalViewer:
         self.mouse_before_zoom = zero.copy()
         self.mouse_after_zoom = zero.copy()
 
-        self.alpha = 0.1
+        self.alpha = 0.16
         # Color Palette in the form of a list of RGB tuples.
         self.palette = np.array(
             [
-                (0.5 * np.sin(np.arange(MAX_ITERATIONS) * self.alpha) + 0.5) * 255,  # R
-                (0.5 * np.sin(np.arange(MAX_ITERATIONS) * self.alpha + 2.094) + 0.5)
+                (0.5 * np.cos(np.arange(MAX_ITERATIONS) * self.alpha) + 0.5) * 255,  # R
+                (0.5 * np.sin(np.arange(MAX_ITERATIONS) * self.alpha + 0.987) + 0.5)
                 * 255,  # G
                 (0.5 * np.cos(np.arange(MAX_ITERATIONS) * self.alpha + 4.188) + 0.5)
                 * 255,  # B
