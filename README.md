@@ -6,19 +6,12 @@ Exploring works in real time for moderately sized windows (e.g. 640x360) by usin
 
 Run `viewer.py` to explore the fractals!
 
-<br />
-
 <img src="Docs/fractal-0.png" alt="Julia Set Fractal" />
-
-<br />
-
 <img src="Docs/fractal-1.png" alt="Mandelbrot Set Fractal Zoomed" />
-
-<br />
-
 <img src="Docs/fractal-2.png" alt="Mandelbrot Set Fractal Zoomed" />
-
-<br />
+<img src="Docs/fractal-3.png" alt="Mandelbrot Set Fractal Zoomed" />
+<img src="Docs/fractal-4.png" alt="Mandelbrot Set Fractal Zoomed" />
+<img src="Docs/fractal-5.png" alt="Mandelbrot Set Fractal Zoomed" />
 
 # Keys and Mouse Controls
 
