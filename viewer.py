@@ -78,9 +78,9 @@ class FractalViewer:
         self.label = tk.Label(root, image=frame_image)
         self.label.pack()
 
-        root.bind("<KeyPress>", lambda event: self.update_keypress(event))
-        root.bind("<MouseWheel>", lambda event: self.update_mousewheel(event))
-        root.bind("<Motion>", lambda event: self.motion(event))
+        root.bind("<KeyPress>", self.update_keypress)
+        root.bind("<MouseWheel>", self.update_mousewheel)
+        root.bind("<Motion>", self.motion)
         root.bind("<ButtonPress 1>", self.set_pressed)
         root.bind("<ButtonRelease 1>", self.set_pressed)
 
